@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 		if (compare_one != compare_two)
 		{
 			cout << "Files are different. Line number is " << counter << endl;
-			check = false;
+			return 1;
 		}
 		counter++;
 	}
