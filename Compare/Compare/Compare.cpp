@@ -26,9 +26,8 @@ int main(int argc, char* argv[])
 
 	string compare_one = "", compare_two = "";
 	int counter = 1;
-	bool check = true;
 
-	while (check && (!first_file.eof() || !second_file.eof()))
+	while (!first_file.eof() || !second_file.eof())
 	{
 		std::getline(first_file, compare_one);
 		std::getline(second_file, compare_two);
@@ -40,10 +39,8 @@ int main(int argc, char* argv[])
 		counter++;
 	}
 	
-	if (check)
-	{
-		cout << "Files are equal" << endl;
-	}
+	cout << "Files are equal" << endl;
+
 
 	first_file.close();
 	second_file.close();
