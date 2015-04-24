@@ -22,22 +22,25 @@ int main(int argc, char* argv[])
 	}
 
 	string str;
+	bool wasFound = false;
 	int counter = 1;
 	while (!In_file.eof())
 	{
 		std::getline(In_file, str);
-		if (str == argv[2])
+		std::size_t found = str.find(argv[2]);
+		if (found != std::string::npos)
 		{
 			cout << "Text found in " << counter << " string." << endl;
-			system("Pause");
-			return 0;
+			wasFound = true;
 		}
 		counter++;
 	}
-
-	cout << "Text not found" << endl;
-	In_file.close();
+	if (!wasFound)
+	{
+		cout << "Text not found" << endl;
+		return 1;
+	}
 	system("Pause");
-	return 1;
+	return 0;
 }
 
