@@ -25,9 +25,9 @@ int main(int argc, char* argv[])
 	int counter = 1;
 	while (!In_file.eof())
 	{
-		std::getline(In_file, str);
-		std::size_t found = str.find(argv[2]);
-		if (found != std::string::npos)
+		getline(In_file, str);
+		size_t found = str.find(argv[2]);
+		if (found != string::npos)
 		{
 			cout << "Text found in " << counter << " string." << endl;
 			wasFound = true;

@@ -18,9 +18,15 @@ int main(int argc, char* argv[])
 	ifstream second_file;
 	second_file.open(argv[2]);
 
-	if (!first_file || !second_file)
+	if (!first_file)
 	{
-		cout << "File opening error" << endl;
+		cout << "Input file opening error" << endl;
+		return 1;
+	}
+
+	if (!second_file)
+	{
+		cout << "Output file opening error" << endl;
 		return 1;
 	}
 
