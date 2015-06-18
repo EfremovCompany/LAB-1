@@ -14,7 +14,6 @@ int main(int argc, char* argv[])
 	}
 
 	ifstream In_file(argv[1]);
-	/*In_file.open(argv[1]);*/
 	if (!In_file)
 	{
 		cout << "File opening error" << endl;

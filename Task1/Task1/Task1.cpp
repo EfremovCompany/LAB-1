@@ -12,37 +12,31 @@ int main(int argc, char* argv[])
 		cout << "Wrong number of params" << endl;
 		return 1;
 	}
-	FILE *fInput = fopen(argv[1], "rb");
-	FILE *fOutput = fopen(argv[2], "wb");
-	if (fInput == NULL || fOutput == NULL)
+
+	ifstream fInput(argv[1]);
+	ofstream fOutput(argv[2]);
+
+	if (!fInput)
 	{
-		cout << "File opening error" << endl;
+		cout << "Input file opening error" << endl;
+		return 1;
+	}
+	if (!fOutput)
+	{
+		cout << "Output file opening error" << endl;
 		return 1;
 	}
   
-	// ѕеременна€ ch должна иметь тип int, а не char
-	int ch;
-	// ÷икл чтени€ продолжаетс€ пока код считанного символа не станет равен EOF (-1)
-	while ((ch = fgetc(fInput)) != EOF)
+	string buff;
+	while (!fInput.eof())
 	{
-		//putchar(ch);
-		fputc(ch, fOutput);
+		getline(fInput, buff);
+		fOutput << buff + "\n";
 	}
 
-	if (fInput != NULL)
-	{
-		// ”казатель, передаваемый функции fclose, не должен быть равен NULL
-		fclose(fInput);
-		fInput = NULL;
-	}
-	if (fOutput != NULL)
-	{
-		// ”казатель, передаваемый функции fclose, не должен быть равен NULL
-		fclose(fOutput);
-		fOutput = NULL;
-	}
+	fInput.close();
+	fOutput.close();
 
-	system("Pause");
 	return 0;
 }
 
